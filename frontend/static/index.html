@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Notes History</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body data-ng-app="myApp">
+
+        <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+            <a class="navbar-brand" href="#">Meeting Notes</a>
+        </nav>   
+
+        <div class="main-content">
+
+            <div class="container" data-ng-controller="notesController">
+                <div class="row">
+                    <section class="col-md-8">
+                        <h2>Latest Note</h2>
+
+                        <form novalidate name="noteForm">
+                            <div class="form-group">
+                                <label class="sr-only" for="noteContent">Author</label>
+                                <textarea class="form-control" data-ng-model="currentNote.content" id="noteContent" rows="10"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="noteAuthor">Author</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">Author</div>
+                                    <input type="text" class="form-control" data-ng-model="currentNote.author" id="noteAuthor" placeholder="Enter your first name">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-lg btn-primary btn-new-note" data-ng-click="addNote(currentNote)" data-ng-disabled="noteForm.$pristine">Add Note</button>
+                        </form>
+                    </section><!-- /.col -->
+
+                    <aside class="col-md-4 version-history">
+                        <h3>Version History</h3>
+                        <div class="note-card" data-ng-repeat="note in allNotes">
+                            <div class="row">
+                                <div class="col note-author">{{note.author}}</div>
+                                <div class="col note-date">{{note.createdDate | date : "short"}}</div>
+                            </div>
+                            <p>{{note.content}}</p>
+                            <div class="note-actions">
+                                <a href="" class="btn btn-link btn-note-action delete" data-ng-click="deleteNote(note.uid)">Delete</a>
+                            </div>
+                        </div>
+
+                        <p class="text-muted" data-ng-if="!allNotes || allNotes.length === 0">There are no past versions of notes.</p>
+                    </aside><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+
+        </div><!-- /.main-content -->
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="app.js"></script>
+</html>

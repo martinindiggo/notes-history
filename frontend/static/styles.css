@@ -1,0 +1,61 @@
+.main-content {
+    margin-top: 100px;
+}
+
+.version-history {
+    margin-top: 25px;
+}
+
+.btn-new-note {
+    float: right;
+    display: block;
+    width: 100%;
+}
+
+/* note card */
+.note-card {
+    border: 1px solid #efefef;
+    border-radius: 2px;
+    box-shadow: 0 3px 4px #dfdfdf;
+    padding: 15px 25px 5px;
+    margin-bottom: 10px;
+}
+
+.note-card .note-author,
+.note-card .note-date {
+    font-size: 0.9em;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.note-card .btn-note-action {
+    color: #999;
+    font-size: 0.9em;
+    padding-right: 0;
+    text-decoration: none;
+}
+
+.note-card .btn-note-action.delete {
+    color: #F44336;
+    text-transform: uppercase;
+}
+
+.note-card .btn-note-action.delete:hover {
+    color: #FF5252;
+}
+
+.note-card .note-date,
+.note-card .note-actions {
+    text-align: right;
+}
+
+@media (min-width: 768px) {
+    .version-history {
+        margin-top: 0;
+    }
+
+    .btn-new-note {
+        float: right;
+        width: auto;
+    }
+}

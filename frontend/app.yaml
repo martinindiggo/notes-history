@@ -1,0 +1,11 @@
+module: frontend
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /
+  static_files: static/index.html
+  upload: static/index.html
+- url: /
+  static_dir: static
